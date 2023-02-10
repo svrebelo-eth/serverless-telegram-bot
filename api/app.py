@@ -6,7 +6,7 @@ from flask import request
 from flask import Response
 
 app = Flask(__name__)
-TOKEN = "Your API TOKEN from BotFather"
+TOKEN = "6239948680:AAHkGN6fKhu1jLBFnX5pPfMQ9Uaco9MaEDE"
 
 def imageAsDict(imageURL, caption):
     return {
@@ -15,16 +15,15 @@ def imageAsDict(imageURL, caption):
         "caption": caption,
     }
 
-
 def sendMediaGroup(chatid, allImages):
-    url = f"https://api.telegram.org/bot{TOKEN}/sendMediaGroup"
+    url = f"https://api.telegram.org/bot6239948680:AAHkGN6fKhu1jLBFnX5pPfMQ9Uaco9MaEDE/sendMediaGroup"
     media = [imageAsDict(allImages[i]["src"], allImages[i]["prompt"]) for i in range(5)]
     payload = {"chat_id": chatid, "media": media}
     r = requests.post(url, json=payload)
     return r
 
 def sendMessage(chat_id, text):
-    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    url = f"https://api.telegram.org/bot6239948680:AAHkGN6fKhu1jLBFnX5pPfMQ9Uaco9MaEDE/sendMessage"
     payload = {"chat_id": chat_id, "text": text}
     r = requests.post(url, json=payload)
     return r
